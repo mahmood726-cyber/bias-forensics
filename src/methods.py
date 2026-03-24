@@ -25,6 +25,10 @@ def egger_test(yi, sei):
     x = 1.0 / sei  # precision
     y = yi / sei    # standardized effect
 
+    # Guard: if all precisions are identical, linregress will fail
+    if np.std(x) < 1e-10:
+        return {'p': 1.0, 'intercept': 0, 'se': 0, 't': 0, 'significant': False}
+
     slope, intercept, r, p, se_slope = stats.linregress(x, y)
 
     # The intercept's significance test (the actual Egger test)
