@@ -1,0 +1,18 @@
+{
+  "n_reviews": 307,
+  "classification_counts": {
+    "Clean": 72,
+    "Suspected": 150,
+    "Confirmed": 0,
+    "Discordant": 85
+  },
+  "method_detection_rates": {
+    "egger": 28.0,
+    "begg": 26.4,
+    "pcurve_inadequate": 0.0,
+    "selection_model": 0.0
+  },
+  "mean_tf_k0": 1.4,
+  "mean_shift": 0.9756,
+  "elapsed_seconds": 4.0
+}
