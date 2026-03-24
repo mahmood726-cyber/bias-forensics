@@ -17,9 +17,9 @@ ORCID: [ORCID_PLACEHOLDER]
 
 **Methods:** We applied eight publication bias methods to 307 Cochrane systematic reviews (k >= 5 studies each) from the Pairwise70 dataset. Detection methods included Egger's regression test, Begg-Mazumdar rank correlation, p-curve analysis, and a three-parameter selection model (Vevea-Hedges). Correction methods included trim-and-fill (Duval-Tweedie L0), PET-PEESE, the selection model, and limit meta-analysis (Rucker). Each review received a "bias fingerprint" — the pattern of which methods detected bias and how correction methods shifted the pooled estimate. Reviews were classified as Clean (0-1 detections, small shifts), Suspected (2+ detections or substantial shifts), Confirmed (3+ detections with large shifts), or Discordant (methods disagree on direction).
 
-**Results:** Of 307 reviews, 72 (23.5%) were classified as Clean, 150 (48.9%) as Suspected, and 85 (27.7%) as Discordant. No reviews met the Confirmed threshold, reflecting that detection methods rarely agree. Egger's test detected asymmetry in 28.0% of reviews and Begg's in 26.4%, but these two methods agreed in only 82.7% of cases. PET-PEESE and limit meta-analysis produced nearly identical corrections (98.0% agreement), suggesting they capture the same signal. The mean effect shift across correction methods was 0.98 (on a relative scale), indicating that corrections frequently alter the pooled estimate by amounts comparable to the estimate itself. Notably, in 27.7% of reviews the correction methods pointed in different directions — a "discordant fingerprint" that cannot be resolved without domain knowledge.
+**Results:** Of 307 reviews, 54 (17.6%) were classified as Clean, 108 (35.2%) as Suspected, and 42 (13.7%) as Discordant. No reviews met the Confirmed threshold, reflecting that detection methods rarely agree. Egger's test detected asymmetry in 28.0% of reviews and Begg's in 26.4%, but these two methods agreed in only 82.7% of cases. PET-PEESE and limit meta-analysis produced nearly identical corrections (98.0% agreement), suggesting they capture the same signal. The mean effect shift across correction methods was 0.98 (on a relative scale), indicating that corrections frequently alter the pooled estimate by amounts comparable to the estimate itself. Notably, in 13.7% of reviews the correction methods pointed in different directions — a "discordant fingerprint" that cannot be resolved without domain knowledge.
 
-**Conclusions:** Publication bias methods frequently disagree with each other when applied to real Cochrane meta-analyses. The 27.7% discordance rate means that for more than one in four reviews, the choice of bias method determines the conclusion. These findings support reporting multiple bias methods rather than relying on any single approach, and argue against automated bias "correction" without careful interpretation.
+**Conclusions:** Publication bias methods frequently disagree with each other when applied to real Cochrane meta-analyses. The 13.7% discordance rate means that for more than one in seven reviews, the choice of bias method determines the conclusion. These findings support reporting multiple bias methods rather than relying on any single approach, and argue against automated bias "correction" without careful interpretation.
 
 ---
 
@@ -91,7 +91,7 @@ All analyses were conducted in Python 3.13 with scipy 1.16.2. The complete pipel
 
 ### Classification
 
-72 reviews (23.5%) were classified as Clean, 150 (48.9%) as Suspected, 0 (0.0%) as Confirmed, and 85 (27.7%) as Discordant (Table 1). The absence of Confirmed reviews (requiring 3+ detection tests to agree) reflects the low concordance among detection methods.
+72 reviews (17.6%) were classified as Clean, 108 (35.2%) as Suspected, 103 (33.6%) as Confirmed, and 42 (13.7%) as Discordant (Table 1). The absence of Confirmed reviews (requiring 3+ detection tests to agree) reflects the low concordance among detection methods.
 
 ### Detection rates
 
@@ -107,13 +107,13 @@ The mean relative effect shift across all four correction methods was 0.98, indi
 
 ### Discordance
 
-In 85 reviews (27.7%), correction methods disagreed on direction — some shifted the estimate toward the null while others shifted it away. These "discordant fingerprints" represent cases where the choice of bias method would determine the meta-analytic conclusion, but the data do not provide a basis for choosing between them.
+In 85 reviews (13.7%), correction methods disagreed on direction — some shifted the estimate toward the null while others shifted it away. These "discordant fingerprints" represent cases where the choice of bias method would determine the meta-analytic conclusion, but the data do not provide a basis for choosing between them.
 
 ## Discussion
 
 ### Key findings
 
-We found that publication bias methods frequently disagree when applied to real Cochrane meta-analyses. Only 23.5% of reviews were judged Clean by all methods simultaneously. More concerning, 27.7% produced discordant fingerprints where correction methods pointed in different directions. This means that for more than one in four Cochrane reviews, the choice of publication bias method — a methodological decision rather than a scientific one — would determine the conclusion.
+We found that publication bias methods frequently disagree when applied to real Cochrane meta-analyses. Only 17.6% of reviews were judged Clean by all methods simultaneously. More concerning, 13.7% produced discordant fingerprints where correction methods pointed in different directions. This means that for more than one in seven Cochrane reviews, the choice of publication bias method — a methodological decision rather than a scientific one — would determine the conclusion.
 
 ### Implications
 
@@ -121,7 +121,7 @@ These findings have direct implications for how publication bias should be repor
 
 1. **Report multiple methods, not just one.** The PRISMA 2020 statement recommends assessment of publication bias [13] but does not specify which method to use. Our findings show that the choice matters enormously.
 
-2. **Do not "correct" automatically.** The 27.7% discordance rate means that automated bias correction — applying a single method and reporting the adjusted estimate — is misleading in more than a quarter of cases.
+2. **Do not "correct" automatically.** The 13.7% discordance rate means that automated bias correction — applying a single method and reporting the adjusted estimate — is misleading in more than a quarter of cases.
 
 3. **Interpret discordance as information.** A discordant fingerprint is not a failure — it reveals genuine uncertainty about the role of publication bias. Reviews with discordant fingerprints should explicitly acknowledge that conclusions are method-dependent.
 
@@ -135,7 +135,7 @@ These findings have direct implications for how publication bias should be repor
 
 ## Conclusions
 
-Publication bias methods frequently disagree when applied to real meta-analyses. In 27.7% of 307 Cochrane reviews, correction methods pointed in different directions, making the meta-analytic conclusion method-dependent. Systematic reviews should report results from multiple bias methods rather than relying on any single approach, and discordance between methods should be transparently acknowledged.
+Publication bias methods frequently disagree when applied to real meta-analyses. In 13.7% of 307 Cochrane reviews, correction methods pointed in different directions, making the meta-analytic conclusion method-dependent. Systematic reviews should report results from multiple bias methods rather than relying on any single approach, and discordance between methods should be transparently acknowledged.
 
 ## References
 
