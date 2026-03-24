@@ -63,12 +63,16 @@ def classify_bias(fingerprint):
     # (simplified: just check if they're all on the same side of zero)
     n_agree_dir = sum(1 for d in directions if d == unadj_dir)
 
+    # P0-2 FIX: also count large correction shifts as evidence of bias
+    n_large_shifts = sum(1 for s in shifts if s > 0.3)
+    total_evidence = n_detect + min(n_large_shifts, 2)  # cap shift contribution
+
     # Classification
-    if n_detect <= 1 and mean_shift < 0.2:
+    if total_evidence <= 1 and mean_shift < 0.2:
         bias_class = 'Clean'
-    elif n_detect >= 3 and mean_shift >= 0.2:
+    elif total_evidence >= 3 and mean_shift >= 0.2:
         bias_class = 'Confirmed'
-    elif n_agree_dir <= 2:  # corrections point in different directions
+    elif n_agree_dir <= 2:
         bias_class = 'Discordant'
     else:
         bias_class = 'Suspected'

@@ -54,14 +54,17 @@ def egger_test(yi, sei):
 def begg_test(yi, sei):
     """Begg-Mazumdar rank correlation test.
 
-    Kendall's tau between effect size and variance.
+    Kendall's tau between CENTERED effect size and variance (P1-1 fix).
     """
     k = len(yi)
     if k < 3:
         return {'p': 1.0, 'tau': 0, 'significant': False}
 
     vi = sei ** 2
-    tau, p = stats.kendalltau(yi, vi)
+    # P1-1 FIX: center effects before rank correlation (matches metafor::ranktest)
+    wi = 1.0 / vi
+    theta_fe = np.sum(wi * yi) / np.sum(wi)
+    tau, p = stats.kendalltau(yi - theta_fe, vi)
 
     return {
         'p': float(p) if not math.isnan(p) else 1.0,
@@ -310,22 +313,40 @@ def selection_model_3psm(yi, sei):
     best_theta = theta_fe
     best_tau2 = tau2_unadj
 
-    for eta_try in [0.05, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0]:
-        # Weight: 1 for significant, eta for non-significant
+    # P0-1 FIX: proper weighted likelihood WITH normalizing constant
+    # L_i = w(p_i) * f(y_i|theta,tau2) / C_i
+    # where C_i = integral w(p(y)) * f(y|theta,tau2) dy
+    # For step-function at p=0.025: C_i = Phi(z_crit - theta/se_i) + eta*(1 - Phi(z_crit - theta/se_i))
+    # where z_crit = 1.96 (one-sided 0.025)
+    z_crit = stats.norm.ppf(0.975)  # 1.96
+
+    for eta_try in [0.01, 0.05, 0.1, 0.2, 0.3, 0.5, 0.7, 1.0]:
         wt = np.where(p_onesided < 0.025, 1.0, eta_try)
 
-        # Weighted DL
+        # Estimate theta for this eta (weighted DL)
         wi_w = wt / (vi + tau2_unadj)
         if np.sum(wi_w) < 1e-10:
             continue
-        theta_w = np.sum(wi_w * yi) / np.sum(wi_w)
+        theta_w = float(np.sum(wi_w * yi) / np.sum(wi_w))
 
-        # Log-likelihood
+        # Log-likelihood with normalizing constant
         ll = 0
         for i in range(k):
             var_i = vi[i] + tau2_unadj
-            ll += -0.5 * math.log(var_i) - 0.5 * (yi[i] - theta_w) ** 2 / var_i
-            ll += math.log(wt[i])
+            se_i = math.sqrt(var_i)
+            # f(y_i | theta, tau2): normal density
+            log_f = -0.5 * math.log(2 * math.pi * var_i) - 0.5 * (yi[i] - theta_w) ** 2 / var_i
+            # w(p_i): selection weight
+            log_w = math.log(max(wt[i], 1e-30))
+            # C_i: normalizing constant
+            # P(significant | theta, se_i) = P(|Z| > z_crit) = 1 - Phi(z_crit - theta_w/se_i) + Phi(-z_crit - theta_w/se_i)
+            p_sig = (1 - stats.norm.cdf(z_crit - theta_w / se_i) +
+                     stats.norm.cdf(-z_crit - theta_w / se_i))
+            p_nonsig = 1 - p_sig
+            C_i = p_sig * 1.0 + p_nonsig * eta_try
+            C_i = max(C_i, 1e-30)
+
+            ll += log_f + log_w - math.log(C_i)
 
         if ll > best_ll:
             best_ll = ll
@@ -334,12 +355,14 @@ def selection_model_3psm(yi, sei):
             best_tau2 = tau2_unadj
 
     # LR test: compare eta=1 (no selection) vs best eta
+    # Null model: eta=1, same likelihood computation
     ll_null = 0
     wi_null = 1.0 / (vi + tau2_unadj)
-    theta_null = np.sum(wi_null * yi) / np.sum(wi_null)
+    theta_null = float(np.sum(wi_null * yi) / np.sum(wi_null))
     for i in range(k):
         var_i = vi[i] + tau2_unadj
-        ll_null += -0.5 * math.log(var_i) - 0.5 * (yi[i] - theta_null) ** 2 / var_i
+        ll_null += -0.5 * math.log(2 * math.pi * var_i) - 0.5 * (yi[i] - theta_null) ** 2 / var_i
+        # Under eta=1, C_i = 1 and log(w_i) = 0, so just the normal density
 
     lr_stat = 2 * (best_ll - ll_null)
     lr_p = 1 - stats.chi2.cdf(max(0, lr_stat), 1)
