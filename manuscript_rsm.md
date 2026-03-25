@@ -81,7 +81,7 @@ Pairwise agreement between methods was computed as the proportion of reviews whe
 
 ### Software
 
-All analyses were conducted in Python 3.13 with scipy 1.16.2. The complete pipeline is available at [GITHUB_URL_PLACEHOLDER].
+All analyses were conducted in Python 3.13 with scipy 1.16.2. The complete pipeline is available at https://github.com/mahmood726-cyber/bias-forensics.
 
 ## Results
 
@@ -139,7 +139,7 @@ Publication bias methods frequently disagree when applied to real meta-analyses.
 
 ## Data availability statement
 
-The Pairwise70 dataset is available from [ZENODO_DOI_PLACEHOLDER]. The analysis code, all output data, and an interactive dashboard are available at [GITHUB_URL_PLACEHOLDER].
+The Pairwise70 dataset is available from [ZENODO_DOI_PLACEHOLDER]. The analysis code, all output data, and an interactive dashboard are available at https://github.com/mahmood726-cyber/bias-forensics.
 
 ## Funding
 
