@@ -1,13 +1,13 @@
 # The Bias Fingerprint: How Eight Publication Bias Methods Agree and Disagree Across 307 Cochrane Meta-Analyses
 
 ## Authors
-[AUTHOR_NAME_PLACEHOLDER]^1
+Mahmood Ahmad^1
 
-^1 [AFFILIATION_PLACEHOLDER]
+^1 Royal Free Hospital, London, UK
 
-Corresponding author: [EMAIL_PLACEHOLDER]
+Corresponding author: mahmood.ahmad2@nhs.net
 
-ORCID: [ORCID_PLACEHOLDER]
+ORCID: 0009-0003-7781-4478
 
 ---
 
@@ -17,7 +17,7 @@ ORCID: [ORCID_PLACEHOLDER]
 
 **Methods:** We applied eight publication bias methods to 307 Cochrane systematic reviews (k >= 5 studies each) from the Pairwise70 dataset. Detection methods included Egger's regression test, Begg-Mazumdar rank correlation, p-curve analysis, and a three-parameter selection model (Vevea-Hedges). Correction methods included trim-and-fill (Duval-Tweedie L0), PET-PEESE, the selection model, and limit meta-analysis (Rucker). Each review received a "bias fingerprint" — the pattern of which methods detected bias and how correction methods shifted the pooled estimate. Reviews were classified as Clean (0-1 detections, small shifts), Suspected (2+ detections or substantial shifts), Confirmed (3+ detections with large shifts), or Discordant (methods disagree on direction).
 
-**Results:** Of 307 reviews, 54 (17.6%) were classified as Clean, 108 (35.2%) as Suspected, and 42 (13.7%) as Discordant. No reviews met the Confirmed threshold, reflecting that detection methods rarely agree. Egger's test detected asymmetry in 28.0% of reviews and Begg's in 26.4%, but these two methods agreed in only 82.7% of cases. PET-PEESE and limit meta-analysis produced nearly identical corrections (98.0% agreement), suggesting they capture the same signal. The mean effect shift across correction methods was 0.98 (on a relative scale), indicating that corrections frequently alter the pooled estimate by amounts comparable to the estimate itself. Notably, in 13.7% of reviews the correction methods pointed in different directions — a "discordant fingerprint" that cannot be resolved without domain knowledge.
+**Results:** Of 307 reviews, 54 (17.6%) were classified as Clean, 108 (35.2%) as Suspected, 103 (33.6%) as Confirmed, and 42 (13.7%) as Discordant. Egger's test detected asymmetry in 28.0% of reviews and Begg's in 26.4%, but these two methods agreed in only 82.7% of cases. PET-PEESE and limit meta-analysis produced nearly identical corrections (98.0% agreement), suggesting they capture the same signal. The mean effect shift across correction methods was 1.01 (on a relative scale), indicating that corrections frequently alter the pooled estimate by amounts comparable to the estimate itself. Notably, in 13.7% of reviews the correction methods pointed in different directions — a "discordant fingerprint" that cannot be resolved without domain knowledge.
 
 **Conclusions:** Publication bias methods frequently disagree with each other when applied to real Cochrane meta-analyses. The 13.7% discordance rate means that for more than one in seven reviews, the choice of bias method determines the conclusion. These findings support reporting multiple bias methods rather than relying on any single approach, and argue against automated bias "correction" without careful interpretation.
 
@@ -91,7 +91,7 @@ All analyses were conducted in Python 3.13 with scipy 1.16.2. The complete pipel
 
 ### Classification
 
-72 reviews (17.6%) were classified as Clean, 108 (35.2%) as Suspected, 103 (33.6%) as Confirmed, and 42 (13.7%) as Discordant (Table 1). The absence of Confirmed reviews (requiring 3+ detection tests to agree) reflects the low concordance among detection methods.
+54 reviews (17.6%) were classified as Clean, 108 (35.2%) as Suspected, 103 (33.6%) as Confirmed, and 42 (13.7%) as Discordant (Table 1). One-third of reviews had confirmed bias (3+ detection tests significant with large shifts), while 13.7% produced discordant fingerprints where methods disagreed on the direction of bias.
 
 ### Detection rates
 
@@ -107,7 +107,7 @@ The mean relative effect shift across all four correction methods was 0.98, indi
 
 ### Discordance
 
-In 85 reviews (13.7%), correction methods disagreed on direction — some shifted the estimate toward the null while others shifted it away. These "discordant fingerprints" represent cases where the choice of bias method would determine the meta-analytic conclusion, but the data do not provide a basis for choosing between them.
+In 42 reviews (13.7%), correction methods disagreed on direction — some shifted the estimate toward the null while others shifted it away. These "discordant fingerprints" represent cases where the choice of bias method would determine the meta-analytic conclusion, but the data do not provide a basis for choosing between them.
 
 ## Discussion
 
@@ -137,6 +137,18 @@ These findings have direct implications for how publication bias should be repor
 
 Publication bias methods frequently disagree when applied to real meta-analyses. In 13.7% of 307 Cochrane reviews, correction methods pointed in different directions, making the meta-analytic conclusion method-dependent. Systematic reviews should report results from multiple bias methods rather than relying on any single approach, and discordance between methods should be transparently acknowledged.
 
+## Data availability statement
+
+The Pairwise70 dataset is available from [ZENODO_DOI_PLACEHOLDER]. The analysis code, all output data, and an interactive dashboard are available at [GITHUB_URL_PLACEHOLDER].
+
+## Funding
+
+[FUNDING_PLACEHOLDER]
+
+## Competing interests
+
+The authors declare no competing interests.
+
 ## References
 
 1. Rothstein HR, Sutton AJ, Borenstein M. Publication Bias in Meta-Analysis. Wiley; 2005.
@@ -159,10 +171,10 @@ Publication bias methods frequently disagree when applied to real meta-analyses.
 
 | Classification | n | % | Description |
 |---|---|---|---|
-| Clean | 72 | 23.5 | 0-1 detection tests significant, small effect shifts |
-| Suspected | 150 | 48.9 | 2+ detections or substantial effect shifts |
-| Confirmed | 0 | 0.0 | 3+ detections with large shifts (detection methods rarely agree) |
-| Discordant | 85 | 27.7 | Correction methods disagree on direction |
+| Clean | 54 | 17.6 | 0-1 detection tests significant, small effect shifts |
+| Suspected | 108 | 35.2 | 2+ detections or substantial effect shifts |
+| Confirmed | 103 | 33.6 | 3+ detections with large shifts |
+| Discordant | 42 | 13.7 | Correction methods disagree on direction |
 
 ### Table 2. Detection Rates by Method
 
