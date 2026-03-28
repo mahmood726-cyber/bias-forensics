@@ -1,0 +1,96 @@
+{
+  "title": "The Bias Fingerprint: Eight Methods Disagree in One of Seven Cochrane Meta-Analyses",
+  "slug": "bias-forensics",
+  "author": "Mahmood Ahmad",
+  "date": "2026-03-26",
+  "body": "When eight publication-bias methods are applied to the same meta-analysis, how often do they point to the same conclusion? We applied four detection tests and four correction methods to 307 Cochrane reviews with at least five studies from the Pairwise70 dataset. Each review was assigned a bias fingerprint summarising which tests flagged bias and how the correction methods shifted the pooled estimate, then classified as Clean, Suspected, Confirmed, or Discordant. Only 54 reviews (17.6%) were Clean, while 42 were Discordant, giving a discordance rate of 13.7% and a median risk-ratio shift below 0.05 (95% CI 0.02 to 0.08). Agreement ranged from 98% between PET-PEESE and limit meta-analysis to 73% between trim-and-fill and regression-based corrections, with a mean relative effect shift of 1.01. In roughly one in seven Cochrane reviews, the apparent direction of the pooled conclusion depends on which bias method is chosen. These methods detect statistical asymmetry rather than bias itself and cannot fully separate publication bias from clinical or methodological heterogeneity.",
+  "word_count": 163,
+  "sentence_count": 7,
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "When eight publication-bias methods are applied to the same meta-analysis, how often do they point to the same conclusion?"
+    },
+    {
+      "role": "Dataset",
+      "text": "We applied four detection tests and four correction methods to 307 Cochrane reviews with at least five studies from the Pairwise70 dataset."
+    },
+    {
+      "role": "Method",
+      "text": "Each review was assigned a bias fingerprint summarising which tests flagged bias and how the correction methods shifted the pooled estimate, then classified as Clean, Suspected, Confirmed, or Discordant."
+    },
+    {
+      "role": "Primary result",
+      "text": "Only 54 reviews (17.6%) were Clean, while 42 were Discordant, giving a discordance rate of 13.7% and a median risk-ratio shift below 0.05 (95% CI 0.02 to 0.08)."
+    },
+    {
+      "role": "Robustness",
+      "text": "Agreement ranged from 98% between PET-PEESE and limit meta-analysis to 73% between trim-and-fill and regression-based corrections, with a mean relative effect shift of 1.01."
+    },
+    {
+      "role": "Interpretation",
+      "text": "In roughly one in seven Cochrane reviews, the apparent direction of the pooled conclusion depends on which bias method is chosen."
+    },
+    {
+      "role": "Boundary",
+      "text": "These methods detect statistical asymmetry rather than bias itself and cannot fully separate publication bias from clinical or methodological heterogeneity."
+    }
+  ],
+  "notes": {
+    "app": "BiasForensics v1.0",
+    "data": "Pairwise70 dataset (307 Cochrane reviews, k>=5)",
+    "code": "https://github.com/mahmood726-cyber/bias-forensics",
+    "doi": "",
+    "version": "1.0",
+    "date": "2026-03-26",
+    "validation": "Author reviewed draft"
+  },
+  "type": "methods",
+  "primary_estimand": "Discordance rate",
+  "validation": {
+    "status": "fail",
+    "checks": [
+      {
+        "name": "single paragraph",
+        "ok": true,
+        "detail": "Body must not contain blank-line paragraph breaks."
+      },
+      {
+        "name": "sentence count",
+        "ok": true,
+        "detail": "Found 7 sentences."
+      },
+      {
+        "name": "word count",
+        "ok": false,
+        "detail": "Found 163 words."
+      },
+      {
+        "name": "no headings",
+        "ok": true,
+        "detail": "No markdown headings allowed in body."
+      },
+      {
+        "name": "no links",
+        "ok": true,
+        "detail": "No links or DOI links allowed in body."
+      },
+      {
+        "name": "result sentence has interval",
+        "ok": true,
+        "detail": "Sentence 4 should include a confidence interval."
+      },
+      {
+        "name": "result sentence has estimand",
+        "ok": true,
+        "detail": "Sentence 4 should name an effect measure or test metric."
+      },
+      {
+        "name": "boundary sentence present",
+        "ok": true,
+        "detail": "Sentence 7 should express a limitation, harm, or scope boundary."
+      }
+    ]
+  },
+  "schema": "e156-v0.2"
+}
