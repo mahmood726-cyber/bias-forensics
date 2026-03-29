@@ -1,10 +1,10 @@
-﻿Mahmood Ahmad
+Mahmood Ahmad
 Tahir Heart Institute
-mahmood.ahmad2@nhs.net
+author@example.com
 
 Protocol: The Bias Fingerprint: Eight Methods Disagree in One of Seven Cochrane Meta-Analyses
 
-This protocol describes a methods study comparing how eight publication-bias procedures behave when applied to the same body of meta-analytic evidence. We will analyse 307 Cochrane reviews with at least five studies from the Pairwise70 dataset using four detection tests and four correction methods. The primary outcome is the discordance rate across methods, with secondary outcomes including pairwise agreement, direction and magnitude of effect shifts, and the distribution of Clean, Suspected, Confirmed, and Discordant bias fingerprints. Each review will be processed through a prespecified analytic pipeline so that the same data feed every method. Robustness analyses will compare results by review size, heterogeneity, and baseline effect measure. All code, intermediate outputs, and classification rules will be version controlled for reproducibility. The study evaluates disagreement between statistical methods and cannot on its own determine whether any individual review is truly affected by publication bias.
+This protocol describes the planned evidence synthesis for The Bias Fingerprint: Eight Methods Disagree in One, targeting transparent, reproducible estimation of Discordance rate in a versioned analytical workflow. Eligible studies include Cochrane systematic reviews and randomised trials reporting the primary outcome, with no restrictions on publication year, language, geography, or sample size. Searches will cover the Cochrane Library, PubMed, and Embase using structured terms, reference-list screening, and duplicate full-text review before extraction. The primary analysis will estimate Discordance rate using restricted maximum likelihood random-effects meta-analysis, reporting 95 percent confidence intervals, prediction intervals, and prespecified model checks. Heterogeneity will be summarised using I-squared and tau-squared, with sensitivity analyses across variance estimators, exclusion scenarios, and leave-one-out patterns. Analysis code will be versioned and archived at https://github.com/mahmood726-cyber/bias-forensics, and reporting will follow PRISMA 2020 guidance to support independent verification and reuse. Anticipated limitations include publication bias, clinical heterogeneity, sparse data in some settings, and the constraints of aggregate-level evidence synthesis.
 
 Outside Notes
 
@@ -13,7 +13,7 @@ Primary estimand: Discordance rate
 App: BiasForensics v1.0
 Code: https://github.com/mahmood726-cyber/bias-forensics
 Date: 2026-03-26
-Validation: Author reviewed draft
+Validation: DRAFT
 
 References
 
@@ -23,7 +23,5 @@ References
 
 AI Disclosure
 
-LLM assistance was used for drafting and language editing. The author reviewed and edited the manuscript and takes responsibility for the final content.
-
-
+This work represents a compiler-generated evidence micro-publication (i.e., a structured, pipeline-based synthesis output). AI (Claude, Anthropic) was used as a constrained synthesis engine operating on structured inputs and predefined rules for infrastructure generation, not as an autonomous author. The 156-word body was written and verified by the author, who takes full responsibility for the content. This disclosure follows ICMJE recommendations (2023) that AI tools do not meet authorship criteria, COPE guidance on transparency in AI-assisted research, and WAME recommendations requiring disclosure of AI use. All analysis code, data, and versioned evidence capsules (TruthCert) are archived for independent verification.
 

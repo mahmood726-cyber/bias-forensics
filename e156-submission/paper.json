@@ -3,13 +3,13 @@
   "slug": "bias-forensics",
   "author": "Mahmood Ahmad",
   "date": "2026-03-26",
-  "body": "When eight publication-bias methods are applied to the same meta-analysis, how often do they point to the same conclusion? We applied four detection tests and four correction methods to 307 Cochrane reviews with at least five studies from the Pairwise70 dataset. Each review was assigned a bias fingerprint summarising which tests flagged bias and how the correction methods shifted the pooled estimate, then classified as Clean, Suspected, Confirmed, or Discordant. Only 54 reviews (17.6%) were Clean, while 42 were Discordant, giving a discordance rate of 13.7% and a median risk-ratio shift below 0.05 (95% CI 0.02 to 0.08). Agreement ranged from 98% between PET-PEESE and limit meta-analysis to 73% between trim-and-fill and regression-based corrections, with a mean relative effect shift of 1.01. In roughly one in seven Cochrane reviews, the apparent direction of the pooled conclusion depends on which bias method is chosen. These methods detect statistical asymmetry rather than bias itself and cannot fully separate publication bias from clinical or methodological heterogeneity.",
-  "word_count": 163,
+  "body": "When eight publication-bias methods are applied to the same meta-analysis, how often do they reach the same conclusion? We applied four detection tests and four correction methods to 307 Cochrane reviews with at least five studies from the Pairwise70 dataset. Each review received a bias fingerprint summarising which tests flagged bias and how corrections shifted the pooled estimate, classified as Clean, Suspected, Confirmed, or Discordant. Only 54 reviews (17.6%) were Clean while 42 were Discordant, giving a discordance rate of 13.7% and a median risk-ratio shift below 0.05 (95% CI 0.02 to 0.08). Agreement ranged from 98% between PET-PEESE and limit meta-analysis to 73% between trim-and-fill and regression corrections, with mean relative effect shift of 1.01. In roughly one in seven Cochrane reviews, the apparent direction of the pooled conclusion depends on which bias method is chosen. These methods detect statistical asymmetry rather than bias itself and cannot separate publication bias from clinical or methodological heterogeneity.",
+  "word_count": 156,
   "sentence_count": 7,
   "sentences": [
     {
       "role": "Question",
-      "text": "When eight publication-bias methods are applied to the same meta-analysis, how often do they point to the same conclusion?"
+      "text": "When eight publication-bias methods are applied to the same meta-analysis, how often do they reach the same conclusion?"
     },
     {
       "role": "Dataset",
@@ -17,15 +17,15 @@
     },
     {
       "role": "Method",
-      "text": "Each review was assigned a bias fingerprint summarising which tests flagged bias and how the correction methods shifted the pooled estimate, then classified as Clean, Suspected, Confirmed, or Discordant."
+      "text": "Each review received a bias fingerprint summarising which tests flagged bias and how corrections shifted the pooled estimate, classified as Clean, Suspected, Confirmed, or Discordant."
     },
     {
       "role": "Primary result",
-      "text": "Only 54 reviews (17.6%) were Clean, while 42 were Discordant, giving a discordance rate of 13.7% and a median risk-ratio shift below 0.05 (95% CI 0.02 to 0.08)."
+      "text": "Only 54 reviews (17.6%) were Clean while 42 were Discordant, giving a discordance rate of 13.7% and a median risk-ratio shift below 0.05 (95% CI 0.02 to 0.08)."
     },
     {
       "role": "Robustness",
-      "text": "Agreement ranged from 98% between PET-PEESE and limit meta-analysis to 73% between trim-and-fill and regression-based corrections, with a mean relative effect shift of 1.01."
+      "text": "Agreement ranged from 98% between PET-PEESE and limit meta-analysis to 73% between trim-and-fill and regression corrections, with mean relative effect shift of 1.01."
     },
     {
       "role": "Interpretation",
@@ -33,7 +33,7 @@
     },
     {
       "role": "Boundary",
-      "text": "These methods detect statistical asymmetry rather than bias itself and cannot fully separate publication bias from clinical or methodological heterogeneity."
+      "text": "These methods detect statistical asymmetry rather than bias itself and cannot separate publication bias from clinical or methodological heterogeneity."
     }
   ],
   "notes": {
@@ -48,7 +48,7 @@
   "type": "methods",
   "primary_estimand": "Discordance rate",
   "validation": {
-    "status": "fail",
+    "status": "pass",
     "checks": [
       {
         "name": "single paragraph",
@@ -62,8 +62,8 @@
       },
       {
         "name": "word count",
-        "ok": false,
-        "detail": "Found 163 words."
+        "ok": true,
+        "detail": "Found 156 words."
       },
       {
         "name": "no headings",

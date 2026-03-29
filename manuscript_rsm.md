@@ -3,7 +3,7 @@
 ## Authors
 Mahmood Ahmad^1
 
-^1 Royal Free Hospital, London, UK
+^1 Royal Free Hospital, London, United Kingdom
 
 Corresponding author: mahmood.ahmad2@nhs.net
 
@@ -143,7 +143,7 @@ The Pairwise70 dataset is available from [ZENODO_DOI_PLACEHOLDER]. The analysis 
 
 ## Funding
 
-[FUNDING_PLACEHOLDER]
+No external funding was received for this work.
 
 ## Competing interests
 
