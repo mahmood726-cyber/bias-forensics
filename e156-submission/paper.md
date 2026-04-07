@@ -1,6 +1,6 @@
 Mahmood Ahmad
 Tahir Heart Institute
-author@example.com
+mahmood.ahmad2@nhs.net
 
 The Bias Fingerprint: Eight Methods Disagree in One of Seven Cochrane Meta-Analyses
 
