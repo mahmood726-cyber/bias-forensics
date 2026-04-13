@@ -441,7 +441,7 @@ function renderHM() {
       h += '<td><span class="hmc ' + cls + '" role="gridcell" aria-label="' + escapeHtml(m.l) + ': ' + lbl + '"></span></td>';
     });
     h += '<td>' + d._dsum + '</td>';
-    var bc = 'badge-' + d.bias_class.toLowerCase();
+    var bc = 'badge-' + d.String(bias_class ?? "").toLowerCase();
     h += '<td><span class="badge ' + bc + '">' + escapeHtml(d.bias_class) + '</span></td>';
     h += '</tr>';
   });
@@ -595,7 +595,7 @@ function renderTbl() {
     if (cb.checked) ck[cb.value] = 1;
   });
   var filtered = DATA.filter(function(d) {
-    return ck[d.bias_class] && (!st || d.review_id.toLowerCase().indexOf(st) !== -1);
+    return ck[d.bias_class] && (!st || d.String(review_id ?? "").toLowerCase().indexOf(st) !== -1);
   });
   filtered.sort(function(a, b) {
     var va = a[tKey], vb = b[tKey];
