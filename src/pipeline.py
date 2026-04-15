@@ -14,10 +14,10 @@ from pathlib import Path
 
 from src.methods import run_all_methods
 from src.loader import load_all_reviews
+from src.project_paths import DEFAULT_OUTPUT_DIR, resolve_pairwise_dir
 
 
-DEFAULT_PAIRWISE_DIR = r'C:\Models\Pairwise70\data'
-DEFAULT_OUTPUT_DIR = r'C:\BiasForensics\data\output'
+DEFAULT_PAIRWISE_DIR = resolve_pairwise_dir()
 
 
 def classify_bias(fingerprint):
@@ -87,21 +87,22 @@ def classify_bias(fingerprint):
 
 
 def run_pipeline(pairwise_dir, output_dir, max_reviews=0):
+    pairwise_path = resolve_pairwise_dir(pairwise_dir, require_exists=True)
     output_path = Path(output_dir)
     output_path.mkdir(parents=True, exist_ok=True)
 
     print("Publication Bias Forensics Pipeline")
     print("=" * 40)
-    print(f"Data: {pairwise_dir}")
+    print(f"Data: {pairwise_path}")
     print()
 
     # Load reviews
     print("Loading reviews...")
-    reviews = list(load_all_reviews(pairwise_dir, min_k=3))
+    reviews = list(load_all_reviews(str(pairwise_path), min_k=3))
     # Filter to k >= 5 for meaningful bias tests
     reviews = [r for r in reviews if r.k >= 5]
     if max_reviews > 0:
-        reviews = reviews[:max_reviews]
+        reviews = reviews[:max_reviews].copy()
     print(f"  {len(reviews)} reviews with k >= 5")
     print()
 

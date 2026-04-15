@@ -92,11 +92,11 @@ def p_curve(yi, sei):
 
     # Compute two-sided p-values for each study
     z_vals = yi / sei
-    p_vals = 2 * (1 - stats.norm.cdf(np.abs(z_vals)))
+    p_vals = 2 * (stats.norm.sf(np.abs(z_vals)))
 
     # Select only significant studies (p < 0.05)
     sig_mask = p_vals < 0.05
-    sig_p = p_vals[sig_mask]
+    sig_p = p_vals[sig_mask].copy()
     n_sig = len(sig_p)
 
     if n_sig < 3:
@@ -151,14 +151,14 @@ def z_curve(yi, sei):
 
     # Expected discovery rate: estimate the mean power of significant studies
     # Simple approach: use the mean z-value of significant studies to estimate power
-    sig_z = z_vals[z_vals > 1.96]
+    sig_z = z_vals[z_vals > 1.96].copy()
     if len(sig_z) == 0:
         return {'oir': oir, 'edr': 0, 'ratio': 0 if oir > 0 else 1.0}
 
     # Average power of significant studies (using observed z to estimate non-centrality)
     mean_z_sig = float(np.mean(sig_z))
     # Power at mean noncentrality: P(Z > 1.96 | delta = mean_z_sig)
-    edr_est = float(1 - stats.norm.cdf(1.96 - mean_z_sig))
+    edr_est = float(stats.norm.sf(1.96 - mean_z_sig))
 
     # Adjusted EDR for the full set
     edr = edr_est * (n_sig / k) if k > 0 else 0
@@ -217,9 +217,9 @@ def trim_and_fill(yi, sei):
     # Impute
     order = np.argsort(di)
     if side == 'right':
-        extreme_idx = order[-k0:]
+        extreme_idx = order[-k0:].copy()
     else:
-        extreme_idx = order[:k0]
+        extreme_idx = order[:k0].copy()
 
     yi_filled = np.concatenate([yi, 2 * theta0 - yi[extreme_idx]])
     sei_filled = np.concatenate([sei, sei[extreme_idx]])
@@ -302,7 +302,7 @@ def selection_model_3psm(yi, sei):
 
     vi = sei ** 2
     z_vals = yi / sei
-    p_onesided = 1 - stats.norm.cdf(z_vals)  # one-sided p-values
+    p_onesided = stats.norm.sf(z_vals)  # one-sided p-values
 
     # Unadjusted DL
     wi = 1.0 / vi
@@ -336,7 +336,7 @@ def selection_model_3psm(yi, sei):
         # Log-likelihood with normalizing constant
         ll = 0
         for i in range(k):
-            var_i = vi[i] + tau2_unadj
+            var_i = vi[i].copy() + tau2_unadj
             se_i = math.sqrt(var_i)
             # f(y_i | theta, tau2): normal density
             log_f = -0.5 * math.log(2 * math.pi * var_i) - 0.5 * (yi[i] - theta_w) ** 2 / var_i
@@ -344,7 +344,7 @@ def selection_model_3psm(yi, sei):
             log_w = math.log(max(wt[i], 1e-30))
             # C_i: normalizing constant
             # P(significant | theta, se_i) = P(|Z| > z_crit) = 1 - Phi(z_crit - theta_w/se_i) + Phi(-z_crit - theta_w/se_i)
-            p_sig = (1 - stats.norm.cdf(z_crit - theta_w / se_i) +
+            p_sig = (stats.norm.sf(z_crit - theta_w / se_i) +
                      stats.norm.cdf(-z_crit - theta_w / se_i))
             p_nonsig = 1 - p_sig
             C_i = p_sig * 1.0 + p_nonsig * eta_try
@@ -364,7 +364,7 @@ def selection_model_3psm(yi, sei):
     wi_null = 1.0 / (vi + tau2_unadj)
     theta_null = float(np.sum(wi_null * yi) / np.sum(wi_null))
     for i in range(k):
-        var_i = vi[i] + tau2_unadj
+        var_i = vi[i].copy() + tau2_unadj
         ll_null += -0.5 * math.log(2 * math.pi * var_i) - 0.5 * (yi[i] - theta_null) ** 2 / var_i
         # Under eta=1, C_i = 1 and log(w_i) = 0, so just the normal density
 

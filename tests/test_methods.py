@@ -11,6 +11,7 @@ from src.methods import (
     trim_and_fill, pet_peese, selection_model_3psm, limit_meta,
     run_all_methods
 )
+from src.project_paths import resolve_pairwise_dir
 
 # Test data: 10 studies with clear right-side asymmetry (small studies show bigger effects)
 ASYM_YI = np.array([-0.8, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.2, 0.5])
@@ -163,9 +164,9 @@ class TestRunAllMethods:
 
     def test_no_crashes_on_real_data(self):
         """Test on data from first Pairwise70 review."""
-        sys.path.insert(0, r'C:\FragilityAtlas')
         from src.loader import load_review
-        review = load_review(r'C:\Models\Pairwise70\data\CD000028_pub4_data.rda')
+        review_path = resolve_pairwise_dir(require_exists=True) / 'CD000028_pub4_data.rda'
+        review = load_review(str(review_path))
         if review and review.k >= 5:
             r = run_all_methods(review.yi, review.sei)
             for method, result in r.items():
