@@ -3,10 +3,29 @@
 
 library(metafor)
 
-py_results <- read.csv("C:/BiasForensics/data/output/bias_forensics_results.csv",
-                        stringsAsFactors = FALSE, fileEncoding = "UTF-8")
+args <- commandArgs(trailingOnly = FALSE)
+script_arg <- args[grep("^--file=", args)]
+script_path <- if (length(script_arg) > 0) sub("^--file=", "", script_arg[1]) else "tests/validate_vs_metafor.R"
+repo_root <- normalizePath(file.path(dirname(script_path), ".."), winslash = "/", mustWork = TRUE)
 
-pairwise_dir <- "C:/Models/Pairwise70/data"
+py_results <- read.csv(
+  file.path(repo_root, "data", "output", "bias_forensics_results.csv"),
+  stringsAsFactors = FALSE,
+  fileEncoding = "UTF-8"
+)
+
+pairwise_env <- Sys.getenv("PAIRWISE70_DATA_DIR", unset = "")
+pairwise_candidates <- c(
+  pairwise_env,
+  file.path(dirname(repo_root), "Projects", "Pairwise70", "data"),
+  file.path(dirname(repo_root), "Models", "Pairwise70", "data")
+)
+pairwise_candidates <- pairwise_candidates[nzchar(pairwise_candidates)]
+existing <- pairwise_candidates[file.exists(pairwise_candidates)]
+if (length(existing) == 0) {
+  stop("Pairwise70 data directory not found. Set PAIRWISE70_DATA_DIR.")
+}
+pairwise_dir <- normalizePath(existing[1], winslash = "/", mustWork = TRUE)
 
 # Sample 10 reviews
 set.seed(42)
