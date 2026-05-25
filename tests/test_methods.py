@@ -1,15 +1,22 @@
 """Tests for all 8 publication bias methods."""
 
-import sys
 import math
+import sys
+
 import numpy as np
 import pytest
 
 sys.path.insert(0, str(__import__('pathlib').Path(__file__).parent.parent))
 from src.methods import (
-    egger_test, begg_test, p_curve, z_curve,
-    trim_and_fill, pet_peese, selection_model_3psm, limit_meta,
-    run_all_methods
+    begg_test,
+    egger_test,
+    limit_meta,
+    p_curve,
+    pet_peese,
+    run_all_methods,
+    selection_model_3psm,
+    trim_and_fill,
+    z_curve,
 )
 from src.project_paths import resolve_pairwise_dir
 

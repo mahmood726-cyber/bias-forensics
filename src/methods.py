@@ -5,9 +5,9 @@ and returns a dict with method-specific results.
 """
 
 import math
+
 import numpy as np
 from scipy import stats
-
 
 # ─── 1. Egger's Regression Test ───
 

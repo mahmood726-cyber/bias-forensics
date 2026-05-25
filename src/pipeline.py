@@ -4,18 +4,18 @@ Runs all 8 bias methods on 403 Cochrane reviews from the Fragility Atlas dataset
 Usage: python -m src.pipeline [--pairwise-dir DIR] [--output-dir DIR]
 """
 
-import sys
-import json
-import time
-import csv
 import argparse
-import numpy as np
+import csv
+import json
+import sys
+import time
 from pathlib import Path
 
-from src.methods import run_all_methods
-from src.loader import load_all_reviews
-from src.project_paths import DEFAULT_OUTPUT_DIR, resolve_pairwise_dir
+import numpy as np
 
+from src.loader import load_all_reviews
+from src.methods import run_all_methods
+from src.project_paths import DEFAULT_OUTPUT_DIR, resolve_pairwise_dir
 
 DEFAULT_PAIRWISE_DIR = resolve_pairwise_dir()
 
@@ -219,7 +219,7 @@ def run_pipeline(pairwise_dir, output_dir, max_reviews=0):
             pct = counts[cat] / n * 100
             print(f"  {cat:12s}: {counts[cat]:4d} ({pct:5.1f}%)")
         print()
-        print(f"  Detection rates:")
+        print("  Detection rates:")
         for method, rate in summary['method_detection_rates'].items():
             print(f"    {method:20s}: {rate:5.1f}%")
         print(f"  Mean trim-and-fill k0: {summary['mean_tf_k0']:.1f}")

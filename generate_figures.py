@@ -1,13 +1,19 @@
 """
 Generate 3 publication-quality figures for BiasForensics RSM manuscript.
 """
-import csv, json, sys, io, os
+import csv
+import io
+import json
+import os
+import sys
+
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 import matplotlib
+
 matplotlib.use('Agg')
-import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+import matplotlib.pyplot as plt
 import numpy as np
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), 'figures')
@@ -82,7 +88,7 @@ for i, c in enumerate(class_colors_list):
     ax_class.barh(i, 1, height=1, color=c, edgecolor='none')
 ax_class.set_xlim(0, 1)
 ax_class.set_xticks([])
-ax_class.set_ylabel(f'307 Cochrane Reviews (sorted by detection count)', fontsize=10)
+ax_class.set_ylabel('307 Cochrane Reviews (sorted by detection count)', fontsize=10)
 ax_class.invert_yaxis()
 
 # Heatmap
@@ -123,15 +129,15 @@ def get_detection(r, method):
     denom = abs(unadj) if abs(unadj) > 0.01 else 0.01
     if method == 'Egger':
         return r['egger_sig'] == '1'
-    elif method == 'Begg':
+    if method == 'Begg':
         return r['begg_sig'] == '1'
-    elif method == 'Trim-fill':
+    if method == 'Trim-fill':
         return abs(r['tf_adj'] - unadj) / denom > 0.2
-    elif method == 'PET-PEESE':
+    if method == 'PET-PEESE':
         return abs(r['pet_theta'] - unadj) / denom > 0.2
-    elif method == '3PSM':
+    if method == '3PSM':
         return abs(r['sel_theta'] - unadj) / denom > 0.2
-    elif method == 'Limit':
+    if method == 'Limit':
         return abs(r['lim_theta'] - unadj) / denom > 0.2
     return False
 
