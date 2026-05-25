@@ -2,7 +2,7 @@
 # Pin minimum versions; the CI workflow (.github/workflows/ci.yml) installs
 # these for both lint and test jobs.
 
-matplotlib>=3.8
+matplotlib>=3.10.9
 numpy>=1.24
 pandas>=2.0
 pyreadr>=0.5
