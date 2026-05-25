@@ -152,18 +152,18 @@ The authors declare no competing interests.
 ## References
 
 1. Rothstein HR, Sutton AJ, Borenstein M. Publication Bias in Meta-Analysis. Wiley; 2005.
-2. Song F, Parekh S, Hooper L, et al. Dissemination and publication of research findings: an updated review of related biases. Health Technol Assess. 2010;14(8).
+2. Song F, Parekh S, Hooper L, et al. Dissemination and publication of research findings: an updated review of related biases. Health Technol Assess. 2010;14(8). doi:10.3310/hta14080
 3. Carter EC, Schonbrodt FD, Gervais WM, Hilgard J. Correcting for Bias in Psychology. Adv Methods Pract Psychol Sci. 2019;2(2):115-144.
-4. Egger M, Davey Smith G, Schneider M, Minder C. Bias in meta-analysis detected by a simple, graphical test. BMJ. 1997;315(7109):629-634.
+4. Egger M, Davey Smith G, Schneider M, Minder C. Bias in meta-analysis detected by a simple, graphical test. BMJ. 1997;315(7109):629-634. doi:10.1136/bmj.315.7109.629
 5. Begg CB, Mazumdar M. Operating characteristics of a rank correlation test for publication bias. Biometrics. 1994;50(4):1088-1101.
 6. Simonsohn U, Nelson LD, Simmons JP. P-curve: A key to the file-drawer. J Exp Psychol Gen. 2014;143(2):534-547.
 7. Vevea JL, Hedges LV. A general linear model for estimating effect size in the presence of publication bias. Psychometrika. 1995;60(3):419-435.
 8. Duval S, Tweedie R. Trim and fill: A simple funnel-plot-based method. Biometrics. 2000;56(2):455-463.
 9. Stanley TD, Doucouliagos H. Meta-regression approximations to reduce publication selection bias. Res Synth Methods. 2014;5(1):60-78.
 10. Rucker G, Schwarzer G, Carpenter JR, Binder H, Schumacher M. Treatment-effect estimates adjusted for small-study effects via a limit meta-analysis. Biostatistics. 2011;12(1):122-142.
-11. Moreno SG, Sutton AJ, Turner EH, et al. Novel methods to deal with publication biases. BMJ. 2009;339:b2981.
+11. Moreno SG, Sutton AJ, Turner EH, et al. Novel methods to deal with publication biases. BMJ. 2009;339:b2981. doi:10.1186/1471-2288-9-2
 12. [FRAGILITY_ATLAS_REFERENCE — companion paper].
-13. Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement. BMJ. 2021;372:n71.
+13. Page MJ, McKenzie JE, Bossuyt PM, et al. The PRISMA 2020 statement. BMJ. 2021;372:n71. doi:10.1136/bmj.n71
 
 ## Tables
 
