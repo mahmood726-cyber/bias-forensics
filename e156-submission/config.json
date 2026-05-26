@@ -3,7 +3,7 @@
   "slug": "bias-forensics",
   "author": "Mahmood Ahmad",
   "date": "2026-03-26",
-  "path": "C:\\BiasForensics",
+  "path": "..",
   "type": "methods",
   "primary_estimand": "Discordance rate",
   "summary": "Eight publication bias methods produce discordant conclusions in 13.7% of Cochrane meta-analyses.",
