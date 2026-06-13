@@ -8,7 +8,7 @@ When eight publication-bias methods are applied to the same meta-analysis, how o
 
 ## Run
 
-Open `index.html` (or `index.html`) in any modern browser. No build step.
+Open `index.html` (landing page) or `dashboard/index.html` (dashboard) in any modern browser. No build step.
 
 For local development:
 
@@ -23,13 +23,13 @@ python -m http.server 8000
 python -m pytest -q
 ```
 
-The suite under `tests/` includes 2 test file(s).
+The suite under `tests/` includes 3 test file(s).
 
 ## Repo layout
 
 | Path | Purpose |
 |---|---|
-| `index.html` | the dashboard (main artifact) |
+| `dashboard/index.html` | the dashboard (main artifact) |
 | `index.html` | landing page |
 | `tests/` | pytest tests |
 | `e156-submission/` | E156 micro-paper bundle |
