@@ -209,7 +209,9 @@ def trim_and_fill(yi, sei):
     else:
         S = np.sum(np.abs(signed_ranks[signed_ranks < 0]))
 
-    k0 = max(0, round((4 * S - k * (k + 1)) / (2 * k + 1)))
+    # Duval-Tweedie L0 estimator: L0 = (4*Tn - k(k+1)) / (2k - 1)
+    # (matches metafor::trimfill; denominator is 2k-1, NOT 2k+1).
+    k0 = max(0, round((4 * S - k * (k + 1)) / (2 * k - 1)))
 
     if k0 == 0:
         return {'theta_adj': theta0, 'k0': 0, 'theta_unadj': theta0}

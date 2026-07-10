@@ -118,6 +118,18 @@ class TestTrimAndFill:
         r = trim_and_fill(np.array([0.5, -0.5]), np.array([0.2, 0.2]))
         assert math.isfinite(r['theta_adj'])
 
+    def test_l0_denominator_duval_tweedie(self):
+        """L0 uses (2k-1) denominator (Duval-Tweedie/metafor), not (2k+1).
+
+        Regression for F1: this input gives S=12, k=6. With the correct
+        denominator (2k-1)=11, k0 = round(6/11) = 1. The buggy (2k+1)=13
+        denominator gives round(6/13) = 0 (under-detects one imputed study).
+        """
+        yi = np.array([-1.125, 0.193, -0.291, 0.055, -0.038, 0.101])
+        sei = np.array([0.472, 0.126, 0.437, 0.127, 0.238, 0.272])
+        r = trim_and_fill(yi, sei)
+        assert r['k0'] == 1
+
 
 class TestPetPeese:
     def test_returns_adjusted_theta(self):
